@@ -1,0 +1,39 @@
+{
+  "$comment": "Which saved files never trigger a re-check of the markup near them. The ONE copy of this rule: src/related.js applies it in the engine, the Claude Code hook imports related.js from its bundled engine, and the VS Code extension reads this file from its bundled engine. Each rule is tried in order; the first match wins and its reason is what the caller is told. `on` is what the pattern is tested against: \"basename\" is the file name alone; \"pathBelowRoot\" is the path relative to the project root, tried only when a root is known and the file is under it (so a project living under ~/.local is not silenced by its own parent directories). `flags` are JavaScript RegExp flags.",
+  "neverTrigger": [
+    {
+      "on": "basename",
+      "pattern": "^\\.",
+      "reason": "a dotfile is tooling configuration, not content a page renders"
+    },
+    {
+      "on": "pathBelowRoot",
+      "pattern": "(?:^|[\\\\/])\\.[^\\\\/]+[\\\\/]",
+      "reason": "a file under a dot-directory (.vscode, .kiro, .github) is tooling, not content a page renders"
+    },
+    {
+      "on": "basename",
+      "pattern": "^(package-lock\\.json|npm-shrinkwrap\\.json|pnpm-lock\\.yaml|yarn\\.lock|bun\\.lockb?)$",
+      "flags": "i",
+      "reason": "a lockfile records dependency versions; no page renders it"
+    },
+    {
+      "on": "basename",
+      "pattern": "^(tsconfig|jsconfig)[^/\\\\]*\\.json$",
+      "flags": "i",
+      "reason": "a TypeScript/JavaScript project config; no page renders it"
+    },
+    {
+      "on": "basename",
+      "pattern": "\\.config\\.[^.]+$",
+      "flags": "i",
+      "reason": "a *.config.* file configures a tool; no page renders it"
+    },
+    {
+      "on": "basename",
+      "pattern": "^[^.]+\\.config\\.[^.]+\\.[^.]+$",
+      "flags": "i",
+      "reason": "a *.config.* file configures a tool; no page renders it"
+    }
+  ]
+}

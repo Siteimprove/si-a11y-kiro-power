@@ -1,0 +1,339 @@
+{
+  "name": "@siteimprove/si-a11y",
+  "version": "1.1.38",
+  "description": "Local WCAG 2.2 A/AA engine for HTML, CSS and framework components (JSX/TSX, Vue, Angular, Svelte). The code being checked never leaves the machine (PRIVACY.md). Superset of @siteimprove/a11y-local.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "si-a11y": "bin/cli.js",
+    "si-a11y-mcp": "bin/mcp.js",
+    "si-a11y-check-related": "bin/check-related.js"
+  },
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./types/*.d.ts": "./src/types/*.d.ts",
+    "./types/*": "./src/types/*.d.ts"
+  },
+  "siA11yBundle": {
+    "generatedBy": "packages/si-a11y/scripts/bundle.mjs",
+    "esbuild": "0.28.2",
+    "entryPoints": [
+      "bin/cli.js",
+      "bin/mcp.js",
+      "bin/check-related.js",
+      "bin/telemetry-flush.js",
+      "src/index.js",
+      "src/related.js"
+    ],
+    "note": "Generated from packages/si-a11y. Change the source and run `npm run bundle`; never edit these files by hand.",
+    "lockfile": {
+      "path": "packages/si-a11y/package-lock.json",
+      "sha256": "74b1ab2a7df0fbed2aebdb76d020f792a17021e601027ff59edda069296e0d18"
+    },
+    "dependencies": {
+      "node_modules/@babel/parser": {
+        "version": "7.29.8",
+        "integrity": "sha512-E8lTAYNB1KW+FH+VGJuZM1ioAx2E6oVlvQFRrf5P8ZZmsiJXYAD9vTFV7yyEURNzgh1dFqMZuO6tUwcARbqFCA=="
+      },
+      "node_modules/@modelcontextprotocol/sdk": {
+        "version": "1.32.1",
+        "integrity": "sha512-2DdE+SJDtzLEEWzY1ZjY7Q+VcPhcV1KisD3zI4u0XZyktsjHum1mwbMI+JaulUBi2OZk+KJAi2uPXzxichPkdw=="
+      },
+      "node_modules/@siteimprove/alfa-act": {
+        "version": "0.120.0",
+        "integrity": "sha512-IoGPNWFdRZz3o7ZgQPDbRkekar0zYmsJyx6AdMFMbuWsM523RudSNwL97PlolEJLukDMBOx6ePSEppyBvx0Efw=="
+      },
+      "node_modules/@siteimprove/alfa-affine": {
+        "version": "0.120.0",
+        "integrity": "sha512-B0QH45Z6UVkHTLKZdPirIm5DkwJsXtp52hdailmMlC3leZUd5Oi1vPFS2EBpNw4LSxHtHRPc1LfzTqOVYcOHYg=="
+      },
+      "node_modules/@siteimprove/alfa-aria": {
+        "version": "0.120.0",
+        "integrity": "sha512-967oFlW03ZlHDfRtT6gMus+6JUgKY+gLRHY0n/7GzHNaJFLPtkE9B2co0bf+NmiwJitfE65yNCowa9EycPkmhQ=="
+      },
+      "node_modules/@siteimprove/alfa-array": {
+        "version": "0.120.0",
+        "integrity": "sha512-tV6kqkr0kl+NYMUIwia9Js37g06EoWmw2Q2p5OZkm3gW3bq7GVKxYCYl0qHWCeBfCPhB5EbmHuwV8VMyZ4T+JA=="
+      },
+      "node_modules/@siteimprove/alfa-bits": {
+        "version": "0.120.0",
+        "integrity": "sha512-/AwLN1GYtaX3odlTBEXm+TFHXNuRU30Cu24EhpJu5fI6lnrqWsjbonZwGfTCIP5L6gZVHQn5Rubd26hJvN8A4g=="
+      },
+      "node_modules/@siteimprove/alfa-branched": {
+        "version": "0.120.0",
+        "integrity": "sha512-Vxfo/VQsZMJj2pMedrBBi+Ivo+8rmeRGXf2A6tayhpEPNlvUmetNpvUwIGLovF5MwBck9y7JSInw4287q9VczQ=="
+      },
+      "node_modules/@siteimprove/alfa-cache": {
+        "version": "0.120.0",
+        "integrity": "sha512-2rxTTL9Oia5DbT/loZbQ0ZElnEf1EeKpb0NRLHFRotISdpD9aGTMUZLXo8WTwQs0sBLwyo/ta6VyMQchLUln2Q=="
+      },
+      "node_modules/@siteimprove/alfa-cascade": {
+        "version": "0.120.0",
+        "integrity": "sha512-EnFre6UTESmHR0athoHMC8NEQPZ2f0uimyzu0Rodx3qI3eSRwT9uF7zWXIqzlqwEObVex9WLHH3aDXRIorADfQ=="
+      },
+      "node_modules/@siteimprove/alfa-clone": {
+        "version": "0.120.0",
+        "integrity": "sha512-Cgoj/Q2RWtm7D2UQfnzZOraSYhncHqbt00wEutLVmMsYu4/eMZTwrB/iMYeb1OH5Pc8Oy6XL4VhBRPvQpgDXmQ=="
+      },
+      "node_modules/@siteimprove/alfa-comparable": {
+        "version": "0.120.0",
+        "integrity": "sha512-mNyM8/banc1SAVTL4Q4J8E4XWJkuD3VgvdQ2DIXwZeuQzr8mGswjh3OWuupyVrfBD9MAqBPM+CMpoh3J0frfxQ=="
+      },
+      "node_modules/@siteimprove/alfa-css": {
+        "version": "0.120.0",
+        "integrity": "sha512-hkReRwpw4R2w2e4nloAAHH3eOcIRz6P06Cejc8npV5gqUAysbgNyWHr48QIIZpSkaZWJuvFcXOXSA8wHEXv/Ww=="
+      },
+      "node_modules/@siteimprove/alfa-css-feature": {
+        "version": "0.120.0",
+        "integrity": "sha512-z3iedULawhlQUouEXEmhyzSaw8e+UpMSFJVDSEipbot5z2ntNTHW94kAnJ6JiDpHt2GhYVznn99V/kUj8cXIUg=="
+      },
+      "node_modules/@siteimprove/alfa-device": {
+        "version": "0.120.0",
+        "integrity": "sha512-cu22dKsUEVL8Ae2wA4FPQF9ya6XUdkpTgWVZeFWJdig5c1I4MbUnQ2bR+FeY1cxYoFo89nkK2DSLBu+Z9wWYRw=="
+      },
+      "node_modules/@siteimprove/alfa-dom": {
+        "version": "0.120.0",
+        "integrity": "sha512-JDORasYsg3bMxgNTf/KhtG5e0mkk14XWrcmFDvszc1xYNe571uyRxyYBJEToDQhwa1s2zGZBU9yN/G7G1Zs4Kg=="
+      },
+      "node_modules/@siteimprove/alfa-eaa": {
+        "version": "0.120.0",
+        "integrity": "sha512-oDjLYPA326BcKKZtfe2CfjiBNBsGrh/qZy+gbqvVswawUQczTkzvyojoh5yjWTtHJ9IXJtsHA5dgntLq5Ruh6w=="
+      },
+      "node_modules/@siteimprove/alfa-earl": {
+        "version": "0.120.0",
+        "integrity": "sha512-J0kIF+YyAxawNVvUw+OHueq7k8wACucPYEjGgFWQBrpLUjaolPVnoyZGytHVsvi22W7hKCFj1OIHdJG84vp7zg=="
+      },
+      "node_modules/@siteimprove/alfa-either": {
+        "version": "0.120.0",
+        "integrity": "sha512-/uRdiygixZyKj1I2dsLwwr2t9tkM9axBMj1vOFSmlwVXuSSJ4j8VrNvsI+XlAu6HqmfCljO4q7IvGu4SQ2Ld/w=="
+      },
+      "node_modules/@siteimprove/alfa-encoding": {
+        "version": "0.120.0",
+        "integrity": "sha512-vADIkMGD5zV7nBL0bpynmljfgrnGOQY4vOx2TeBqZa2V1y3jKy9bNM4Y48H05abn/3U02WXIHplAag6LwVtBSA=="
+      },
+      "node_modules/@siteimprove/alfa-equatable": {
+        "version": "0.120.0",
+        "integrity": "sha512-0u+5FJngRL4Q1PRRNTn2huj/IemI6ROwhQDEXdCLAu7JPrfinHYqGIllxbe4wvRIBuWXYPBu+T7Rd+vmOpmmEg=="
+      },
+      "node_modules/@siteimprove/alfa-flags": {
+        "version": "0.120.0",
+        "integrity": "sha512-N2twRmLCxk+FrWNs+Xc4+DyPM9mP5nNHJpxvji47Nnt8VsrTHObjRGsGAlKh3pRjMDmyjt58jANqVXBMlOLnIQ=="
+      },
+      "node_modules/@siteimprove/alfa-fnv": {
+        "version": "0.120.0",
+        "integrity": "sha512-MOFIityiyVtv/pnTYl85r3VjWTs8X+9IJX6sjmm5i1LDAn9j5G/g/yVKVyryS6BSUyNYsCpux/B6tlTtB2Z7VQ=="
+      },
+      "node_modules/@siteimprove/alfa-graph": {
+        "version": "0.120.0",
+        "integrity": "sha512-YVgk/V8UUCiUfvYw2hnmNg6AYz7u22K/G2kbnCsrP6MsZMWF0oV+ig1aao0KJcdu7beWmrunEy4cb8HqI8GDjw=="
+      },
+      "node_modules/@siteimprove/alfa-hash": {
+        "version": "0.120.0",
+        "integrity": "sha512-WSimLqhGoZeVu6lJztHPk2vwZ4ljUHES3MEGKX/B7qNsR5eIs/hWZiPBReACQPukMpXcQHLO3TMEcU4Ncu6d1w=="
+      },
+      "node_modules/@siteimprove/alfa-http": {
+        "version": "0.120.0",
+        "integrity": "sha512-Th4Wn/zSIHmz4npumugpPj1IEXoALn2t89MaNJ3QzmJs5YYgoN3sXFfgyB+FUopNR0xySk/2uNj8G5+jL+Vv1w=="
+      },
+      "node_modules/@siteimprove/alfa-iana": {
+        "version": "0.120.0",
+        "integrity": "sha512-oQ804/Z9Ug1jiVc/vve6Ur4gtijrRJUFs6NYepnDCrvywX1Nm8eo0rGHRJrQCNE+2XrAlunCxbSH6+7R2oI8Jw=="
+      },
+      "node_modules/@siteimprove/alfa-iterable": {
+        "version": "0.120.0",
+        "integrity": "sha512-Uzcm3Ew+4NiuEKVuOywIAYkMAUkpUHHj6OOq5Ixu+y1Mp0AgrYtYTDqzRZulSkhi1R0wbLZKzgywGZLN9KCHjg=="
+      },
+      "node_modules/@siteimprove/alfa-json": {
+        "version": "0.120.0",
+        "integrity": "sha512-9aOjZavzlvLHCDVESuMP02yMU7eu7kjBMXozB0HJ9XLGSSMo+sAfFMUnvGokzBp+04KPHPapdxOE/fPfDXBSNA=="
+      },
+      "node_modules/@siteimprove/alfa-lazy": {
+        "version": "0.120.0",
+        "integrity": "sha512-d+/nVQ1wDqXDtL8ji5F3/DTnaVnhOGs3vFfxmLZrfG/5A6nVn50yAFTtuP04GEL/L0Oc/cBp/SVa/2M/eo8Vng=="
+      },
+      "node_modules/@siteimprove/alfa-list": {
+        "version": "0.120.0",
+        "integrity": "sha512-mcRnvHKswUp+Yq01cjrImfwk7mWitB1caQpU1ZgiqlgnM5WQjkDmnZLsMR3dY1B7jT1cZ9FjdIzpqcmhx+8QXg=="
+      },
+      "node_modules/@siteimprove/alfa-map": {
+        "version": "0.120.0",
+        "integrity": "sha512-pXbzB5r4yb5XTXOn6FbcGdo0hCBkdWHjIO1cTfy3eaGMfGcJs5kF4XHEXwWBFSeeDjV0t8loPERz7cyu8E8caA=="
+      },
+      "node_modules/@siteimprove/alfa-math": {
+        "version": "0.120.0",
+        "integrity": "sha512-Zm0g6+oB5fIBiyFYf36dsRVSrHQni/4pPzxGhTGxGNyZ2BrugTpYAfVl2khWr65RLj6/fxzKPffLuIqOfKKghg=="
+      },
+      "node_modules/@siteimprove/alfa-option": {
+        "version": "0.120.0",
+        "integrity": "sha512-C6lKG/vQuhrTmIoH1k4fp4LbpA6K8Q9gkWOxPYKv3y47h8yLM5TgbQEv1+1IWPYnEEK5OYDXUe8Kz7f7xlwvCA=="
+      },
+      "node_modules/@siteimprove/alfa-painting-order": {
+        "version": "0.120.0",
+        "integrity": "sha512-0jSnYLFPx/Qte5AVO3otYHePWmK0Biz8nfcZSKDZ0+3QxOLlTGB90BzenNqLaZyhcBRGqTQRd76rSDDdaeBvlg=="
+      },
+      "node_modules/@siteimprove/alfa-parser": {
+        "version": "0.120.0",
+        "integrity": "sha512-3yl1bO5EVFi/lH/y6SM8zbD5+/QWZRc96tSynJczmC05GBe6chGNXim0p4jV1y3jFD+rj7TIXstxjr/rtzEt5A=="
+      },
+      "node_modules/@siteimprove/alfa-predicate": {
+        "version": "0.120.0",
+        "integrity": "sha512-SZmGnqMdcxZXHEKNXVUZUZsOAQj4HZo7Hr0Mrkx9iYQBWabtt/exccCIBGeCZGnZrBf6IAPLMG2ioLV+0J32JQ=="
+      },
+      "node_modules/@siteimprove/alfa-record": {
+        "version": "0.120.0",
+        "integrity": "sha512-gToOQ88/zsELcl9Id98mTZkHKNZyYwm6ER/XEbqffzkmzSczI1RUmjpvZhAtLahTAd1wtZwS+ALsunPIwxuShw=="
+      },
+      "node_modules/@siteimprove/alfa-rectangle": {
+        "version": "0.120.0",
+        "integrity": "sha512-erQGoJ30WIk9oBAYeLoYtvmE3Q8jabrQPcCpRllY4pwhtDizyXrs8BDOYire1kTF3/CKQy/z1PdnikRhqOkgAQ=="
+      },
+      "node_modules/@siteimprove/alfa-refinement": {
+        "version": "0.120.0",
+        "integrity": "sha512-00WGoz2JuhAhCzlBwYB/06KBzbsdIEO6C4VWnweupuyFKqiBGjHLJjT01CffhTxNdtZ2Ix7eLS1SnrRQn23T7g=="
+      },
+      "node_modules/@siteimprove/alfa-result": {
+        "version": "0.120.0",
+        "integrity": "sha512-XZgza2BzGl+o1Ry24sus+Cn1UA+HbjJsY0cl3Iigtp/CfvvYTHY0wOtHJkckr/A35z00cGajrFwq8h9cok809A=="
+      },
+      "node_modules/@siteimprove/alfa-rng": {
+        "version": "0.120.0",
+        "integrity": "sha512-AaYiDPxC7xYMwsXfvbwGrKN6/rRTdv3K5sA4VG008hO5otPRnHeOkwTXURdrTbW3BYXcAN0foMnaPktgctN0nA=="
+      },
+      "node_modules/@siteimprove/alfa-rules": {
+        "version": "0.120.0",
+        "integrity": "sha512-hQRA9QN8XaW20ICg/Q4MOOeg5t5WuPK5oZmLvy9PY2EWFdCrJ7LLbMi7nOz5C55wcX+LvCOMD7coJ6meUQSxqg=="
+      },
+      "node_modules/@siteimprove/alfa-sarif": {
+        "version": "0.120.0",
+        "integrity": "sha512-Kdz9CqEJkWB0to7zyky0z1MxQr2rNHm0VxynTGdWHxafBWX07oPx3hHISxHHmIihX/tsmsmoZ+8MPEiFKvNQ4A=="
+      },
+      "node_modules/@siteimprove/alfa-selective": {
+        "version": "0.120.0",
+        "integrity": "sha512-h6EpdMyl7P1fHlxsX9HAMlPp5Tvww37QYg51uOf8PKnc+M4/qFypXjh+kck87XYroJthUsl0wViMzsOkUzikjw=="
+      },
+      "node_modules/@siteimprove/alfa-selector": {
+        "version": "0.120.0",
+        "integrity": "sha512-pCJ5e8prIDDMPaJIUwSKAhnwjX403CI7O5gLqPGDLKIt/vi7RQcXl5ld7a4LN2UAe3h0vgjnQXTvcUKM+oNbUA=="
+      },
+      "node_modules/@siteimprove/alfa-sequence": {
+        "version": "0.120.0",
+        "integrity": "sha512-2G2kyvwGQKHgLsfQ4KFPrl5nSJm+grXIDErD9Pw78Ni9k7y0o0jhCpyJ2s7Jp/6JiLf3GwJmmvQSo5KeqapdcA=="
+      },
+      "node_modules/@siteimprove/alfa-set": {
+        "version": "0.120.0",
+        "integrity": "sha512-VHjVkP/7KsIMKpWj6jyyTdka/uhN9wfYdQwCyTGzcCcFNT7clQgblqHxwuDa18K69YqIWAiJ/sLikaPXCAj3ZQ=="
+      },
+      "node_modules/@siteimprove/alfa-slice": {
+        "version": "0.120.0",
+        "integrity": "sha512-KxYaQ5FPomMBMt9qsahsGHlhObjjWHeo5abL93cHPsKHfbcR1nfXHSD9s11byXGGJEpTnqpfIeJdTGsBsEBqZQ=="
+      },
+      "node_modules/@siteimprove/alfa-string": {
+        "version": "0.120.0",
+        "integrity": "sha512-I3w1ERtYEfqbIrgDIx1lojatHZ78ywRPA5MkMjpMZkhHxlHRbcQVVCZE5sLno2UPky53Ub6eb+Xj9iJoeEEH9Q=="
+      },
+      "node_modules/@siteimprove/alfa-style": {
+        "version": "0.120.0",
+        "integrity": "sha512-w4J0/H7C/ahrxJSe2tW6OwqMfi8IqVDlnmOgIHzWV0Ov/SHHqBVYcQTSz+Ek+3sE15VqaYzIFem+A84QdHzVMg=="
+      },
+      "node_modules/@siteimprove/alfa-table": {
+        "version": "0.120.0",
+        "integrity": "sha512-dT+jg6K+Nz3yH00iVMny3QD6Uy95eo3ODu7WMEeCsJwdB/wZAiNoR0TMPbxc4ZhAmxVVWAN3jzewwBKh4Ljsjg=="
+      },
+      "node_modules/@siteimprove/alfa-thunk": {
+        "version": "0.120.0",
+        "integrity": "sha512-B1dfmYOg0jmLQR5HCXxeTCKxjnehtk8xfU5AfnG1sHwr5r+Ohl/DGd3JML0g2CCHn0YavLs847PDN5Y6RaDIlg=="
+      },
+      "node_modules/@siteimprove/alfa-trampoline": {
+        "version": "0.120.0",
+        "integrity": "sha512-vcyspPaDJ8a7FzFHklNoYLBjp8S5pKflDTkfF+f1Ct0QbvCsgbOQo2ZCQdkFPsLufNLv1aWjUufMaxZJh3eH/A=="
+      },
+      "node_modules/@siteimprove/alfa-tree": {
+        "version": "0.120.0",
+        "integrity": "sha512-KUJ9HqX2BYhQpi7peU1ZAXON/fJKYTM5tcS+BmoF1OurGzOHv/YGth0bgz3Mkd6lfNniY3s2F9a+BO+Rql44yg=="
+      },
+      "node_modules/@siteimprove/alfa-trilean": {
+        "version": "0.120.0",
+        "integrity": "sha512-5NIidL248GcREXKF3ZKPcofLNI0QwZ9lePy3W/KbvrGxrjLM+ukJt2uPoKDdLAGW2ZLYzaiN8GuCtduMbWOaIg=="
+      },
+      "node_modules/@siteimprove/alfa-tuple": {
+        "version": "0.120.0",
+        "integrity": "sha512-/wTM4VNIr9iYE+4/ICFChnhfTnmfqt8D9Q2C+I9GElqH3Cm7CRblWMSQGJR9VA1hYlKUV/P5xFxi3SRmiCkX5w=="
+      },
+      "node_modules/@siteimprove/alfa-url": {
+        "version": "0.120.0",
+        "integrity": "sha512-PfhyhmqTdyj3sKdWnGACnbrpv4tz+gBYMCavxmzoogI4ZLv9P0hXCrNNoT+AqKvWviJJto/6oP2utbPZ5V4Flg=="
+      },
+      "node_modules/@siteimprove/alfa-wcag": {
+        "version": "0.120.0",
+        "integrity": "sha512-fDJdS3B3HsozZqO2v05VTqneJkCOmGTCcOjH8TRgKR0QMdfJ69qT5+OzvzUVN9BAWKVkZiucOB55TQE/k9Kdaw=="
+      },
+      "node_modules/@siteimprove/alfa-web": {
+        "version": "0.120.0",
+        "integrity": "sha512-MsrvpvgyAqdm7PAOuvOU8vbGxhhsI2gWI8QgzGBuWQZctkMFRsrQWnOL5G3egETf1L8ihL2z2PvL+VI+6dRtDw=="
+      },
+      "node_modules/ajv": {
+        "version": "8.20.0",
+        "integrity": "sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA=="
+      },
+      "node_modules/ajv-formats": {
+        "version": "3.0.1",
+        "integrity": "sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ=="
+      },
+      "node_modules/colorjs.io": {
+        "version": "0.7.1",
+        "integrity": "sha512-LY7OHnJZxHwT5UlzNa9bbhHHDbzB6yE5+3MIPwJEQKRvSCt/T4G7epsj+9j2BExUIIfXFIJGsIXUKdfrK9Q5tA=="
+      },
+      "node_modules/entities": {
+        "version": "8.0.0",
+        "integrity": "sha512-zwfzJecQ/Uej6tusMqwAqU/6KL2XaB2VZ2Jg54Je6ahNBGNH6Ek6g3jjNCF0fG9EWQKGZNddNjU5F1ZQn/sBnA=="
+      },
+      "node_modules/fast-deep-equal": {
+        "version": "3.1.3",
+        "integrity": "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q=="
+      },
+      "node_modules/fast-uri": {
+        "version": "3.1.9",
+        "integrity": "sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ=="
+      },
+      "node_modules/json-schema-traverse": {
+        "version": "1.0.0",
+        "integrity": "sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug=="
+      },
+      "node_modules/nanoid": {
+        "version": "3.3.18",
+        "integrity": "sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w=="
+      },
+      "node_modules/parse5": {
+        "version": "8.0.1",
+        "integrity": "sha512-z1e/HMG90obSGeidlli3hj7cbocou0/wa5HacvI3ASx34PecNjNQeaHNo5WIZpWofN9kgkqV1q5YvXe3F0FoPw=="
+      },
+      "node_modules/picocolors": {
+        "version": "1.1.1",
+        "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
+      },
+      "node_modules/postcss": {
+        "version": "8.5.26",
+        "integrity": "sha512-u82N74LFzG8ca+dD8puPnplTXoGH4fTPpVGuIbt36G3qvNlkvfD0lEAZSxaly3KX8TS/L1A1gsCEmvKmBcVbkQ=="
+      },
+      "node_modules/source-map-js": {
+        "version": "1.2.2",
+        "integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw=="
+      },
+      "node_modules/zod": {
+        "version": "4.6.7",
+        "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg=="
+      },
+      "node_modules/zod-to-json-schema": {
+        "version": "3.25.2",
+        "integrity": "sha512-O/PgfnpT1xKSDeQYSCfRI5Gy3hPf91mKVDuYLUHZJMiDFptvP41MSnWofm8dnCm0256ZNfZIM7DSzuSMAFnjHA=="
+      }
+    }
+  }
+}

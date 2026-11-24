@@ -1,0 +1,24 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Accessibility hold before the turn ends",
+      "description": "When the agent's turn ends with a BLOCKING accessibility finding in a file it saved this session (block mode: .a11y-local.json with mode \"block\"), asks the developer whether to fix now or hand over, and on \"fix now\" re-checks those files and holds the turn once more with the engine's block message, so the agent gets one enforced extra turn carrying the findings (Kiro gives a Stop hook exactly one). The confirm command reads only the ledger the save hook (si-a11y-on-save.json) wrote under the OS temporary directory, within Kiro's 10-second budget; the hook command re-runs the local engine over the blocking files only. Nothing is shown when nothing blocks. Runs the local engine; the check itself makes no network call. This file is a TEMPLATE: hooks are not part of a Kiro power and Kiro expands no placeholder in a hook command, so `node si-a11y/install-kiro.mjs` writes a copy to ~/.kiro/hooks/si-a11y-stop.json with __SI_A11Y_POWER_ROOT__ replaced by this folder's absolute path. The installed name must end in .json: Kiro 1.4.26's hook loader reads no other extension. Kiro 1.4.26 shows the save hook's own output to nobody (D22), which is why the hold lives here.",
+      "trigger": "Stop",
+      "action": {
+        "type": "command",
+        "command": "node \"__SI_A11Y_POWER_ROOT__/hooks/stop-check.mjs\" --host=kiro --trigger=stop"
+      },
+      "timeout": 90,
+      "enabled": true,
+      "confirm": {
+        "question": "si-a11y: blocking accessibility findings may stand in files this session edited. Fix now, or hand over with the block recorded?",
+        "options": [
+          { "id": "fix-now", "label": "Fix them now", "run": true },
+          { "id": "hand-over", "label": "Hand over with the block recorded", "run": false, "continueReason": "The developer chose to hand over with blocking accessibility findings standing. Do not fix them now and do not except them in .a11yignore. End the turn with a closing line that names each blocking finding with its criterion and file and says the developer chose to hand over with them recorded." }
+        ],
+        "confirmCommand": "node \"__SI_A11Y_POWER_ROOT__/hooks/stop-check.mjs\" --confirm"
+      }
+    }
+  ]
+}

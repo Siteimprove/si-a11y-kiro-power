@@ -1,0 +1,40 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Accessibility check on front-end save",
+      "description": "After a markup or stylesheet file is saved (HTML, JSX/TSX, Vue, Svelte, CSS and preprocessor sheets), tells the agent to check it with the si-a11y engine before doing anything else, through the si-a11y power's MCP tools. Kiro defers every MCP tool: the agent loads `plugin::__SI_A11Y_POWER_NAME__::tool::si-a11y::check_component` with load_resource and calls it with tool_call, passing only the file's path: the tool reads the saved file itself (an agent that had to paste the text back called that expensive and ran the CLI instead). A prompt that said 'if the tool is not in your tool list, use the CLI' sent it to the CLI every time, because a deferred tool is never in the list. The CLI through hooks/run-check.mjs is the fallback only when the power is not installed; for a stylesheet, the markup that uses it is checked. An agent action, not a command: Kiro 1.4 discards a command hook's stdout on PostFileSave, so a command hook ran the engine and told the agent nothing. Kiro reads only *.json under .kiro/hooks; the former .kiro.hook extension is its deprecated legacy format and was skipped with 'registered: 0'. Lockfiles, tsconfig and *.config.* never match. Advisory by default; block via .a11y-local.json. This file is a TEMPLATE: hooks are not part of a Kiro power and Kiro expands no placeholder in a hook, so `node si-a11y/install-kiro.mjs` writes the copy into ~/.kiro/hooks (or a workspace's .kiro/hooks) with __SI_A11Y_POWER_ROOT__ replaced by this folder's absolute path. Kiro appends a JSON block with file_path and cwd after the prompt.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.(html|htm|jsx|tsx|vue|svelte|css|scss|sass|less|styl|pcss)$",
+      "action": {
+        "type": "agent",
+        "prompt": "si-a11y: a markup or stylesheet file was just saved; its absolute path is `file_path` in the JSON block below. Check it with the si-a11y engine now, before any other step, through the si-a11y power's MCP tool and not the shell. The tools are deferred: load `plugin::__SI_A11Y_POWER_NAME__::tool::si-a11y::check_component` (for a .jsx, .tsx, .vue or .svelte file) or `plugin::__SI_A11Y_POWER_NAME__::tool::si-a11y::check_code` (for .html) with load_resource, then call it with tool_call, passing only `file`, set to that absolute path: the tool reads the saved file from disk itself, with the stylesheets it links or imports, so there is nothing to paste and this costs no more than a shell command. (Pass `source` or `html` only for text that is not saved yet.) Batch several saved files as several tool calls, never as one shell loop. An Angular template (`name.component.html`) goes to either tool: both assess it as a component. Never pass a stylesheet as `file`: it holds no markup and the tool refuses it, naming the markup to check instead. For a stylesheet, do the same for each markup file that links or imports it (for an Angular component stylesheet, its template). Only if the si-a11y power is not installed, run `node \"__SI_A11Y_POWER_ROOT__/hooks/run-check.mjs\" --host=kiro --trigger=hook <file_path>` with your shell tool instead. Fix every `failed` finding, call the tool again, answer its `pendingJudgment` items, and end your report with one line that names the checker: \"Checked by si-a11y: N failures, M need review, K of 55 criteria assessed.\" A `BLOCK` line is a stop order. Do not report this save as done without the check, and do not write files with shell commands (cat, echo, printf, tee): a file written by a shell fires no save event and is never checked."
+      },
+      "enabled": true
+    },
+    {
+      "name": "Accessibility record on save, for the hold before the turn ends",
+      "description": "Runs the local engine over the saved file (a markup file, or the markup that links a saved stylesheet or imports a saved script or data file; lockfiles, tsconfig and *.config.* never re-check anything) and records in a per-session ledger under the OS temporary directory which checked files block, so the Stop hook (si-a11y-stop.json) can hold the turn once over them. Its own output reaches nobody: Kiro 1.4 discards a command hook's stdout on PostFileSave, which is why the hook above is an agent action and the hold lives in the Stop hook. Advisory by default; block via .a11y-local.json. The check itself makes no network call. This file is a TEMPLATE: `node si-a11y/install-kiro.mjs` writes the copy into ~/.kiro/hooks (or a workspace's .kiro/hooks) with __SI_A11Y_POWER_ROOT__ replaced by this folder's absolute path. Kiro reads only *.json under .kiro/hooks (D21); a hook with an unresolvable command fails SILENTLY in Kiro.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.(html|htm|jsx|tsx|vue|svelte|css|scss|sass|less|styl|pcss|ts|js|mjs|cjs|mts|cts|json)$",
+      "action": {
+        "type": "command",
+        "command": "node \"__SI_A11Y_POWER_ROOT__/hooks/run-check.mjs\" --host=kiro --trigger=hook"
+      },
+      "timeout": 90,
+      "enabled": true
+    },
+    {
+      "name": "Write markup with the editor, not the shell",
+      "description": "Before a shell command runs, stops one that writes a markup or stylesheet file (a redirect, tee or sed -i onto .html, .jsx, .tsx, .vue, .svelte, .css and preprocessor sheets) and tells the agent to write it with fs_write or str_replace instead. A file written by a shell fires no save event, so the accessibility check above never runs for it: one session wrote 13 files, index.html and both stylesheets among them, with `cat > file <<EOF`. Everything else a shell does passes untouched; writes under /tmp are left alone. Disable this hook in Kiro's Hooks panel if you want shell writes of markup allowed. The matcher is a broad pattern over the tool's name because Kiro's shell tool has had several names; the script checks the tool name and the command itself.",
+      "trigger": "PreToolUse",
+      "matcher": "[Bb]ash|[Ss]hell|[Cc]ommand|[Tt]erminal",
+      "action": {
+        "type": "command",
+        "command": "node \"__SI_A11Y_POWER_ROOT__/hooks/run-check.mjs\" --guard-shell-write"
+      },
+      "timeout": 15,
+      "enabled": true
+    }
+  ]
+}
