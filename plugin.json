@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "si-a11y",
-  "version": "1.2.38",
+  "version": "1.2.39",
   "description": "Siteimprove accessibility for Kiro: helps you create more accessible code. It checks the HTML, CSS and framework components (React, Vue, Angular, Svelte) the agent just wrote against 26 of the 55 WCAG 2.2 A/AA criteria and steers the agent toward more accessible markup. No warranty for compliance is provided expressly or implied. Runs entirely on this machine, no account; the code being checked never leaves the machine. It does not find or fix every accessibility issue and is not a conformance statement.",
   "author": {
     "name": "Shahab Mohsen, Joshua Miller",

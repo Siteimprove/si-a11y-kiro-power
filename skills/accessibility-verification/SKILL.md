@@ -1,3 +1,9 @@
+---
+name: accessibility-verification
+description: Check the HTML, CSS and framework components (React JSX/TSX, Vue, Angular, Svelte) you just wrote with the bundled si-a11y engine, fix what it reports and report the result honestly. Use when you have written or edited UI code, or when asked to audit, test or fix accessibility. It does not find or fix every accessibility issue, and a clean result is not a conformance statement.
+license: MIT
+---
+
 # si-a11y — Siteimprove accessibility for Kiro
 
 Checks the accessibility of the component the agent just wrote — HTML, CSS, **and framework
@@ -14,7 +20,8 @@ no browser; the code being checked never leaves the machine.
 | `component_pattern` | Get a recommended construction for a modal, tabs, combobox, table… |
 | `coverage` | See exactly which criteria this engine checks and which it cannot |
 
-Eight steering files load with the power. They steer the agent toward more accessible
+Eight steering files ship with the power, in `references/` beside this file, and
+`install-kiro.mjs` installs them as Kiro steering so they load in every session. They steer the agent toward more accessible
 markup, have it check its own output, and have it report honestly about what it did not
 verify. The power helps you create more accessible code. It does not find or fix every
 accessibility issue, and a clean result is not a statement of WCAG conformance.

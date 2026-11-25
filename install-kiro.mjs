@@ -113,7 +113,7 @@ const hookDst = (name) => join(target, "hooks", name);
 // What earlier versions of this installer wrote. Kiro never read it (legacy format);
 // removed on install and on uninstall so no dead file is left to mislead a reader.
 const LEGACY_HOOK_DST = join(target, "hooks", "si-a11y-on-save.kiro.hook");
-const STEERING_SRC = join(POWER_ROOT, "steering");
+const STEERING_SRC = join(POWER_ROOT, "skills", "accessibility-verification", "references");
 const STEERING_DST = join(target, "steering");
 const MCP_DST = join(target, "settings", "mcp.json");
 const PERMISSIONS_DST = join(target, "settings", "permissions.yaml");
@@ -285,7 +285,7 @@ else {
   }
 }
 
-// Steering: every file in steering/, prefixed, with the power path resolved. The
+// Steering: every file in the skill's references/, prefixed, with the power path resolved. The
 // installed copy lives in Kiro's steering directory, not in the power folder, so a
 // file that described the engine's location relative to itself was wrong exactly
 // where it was read.

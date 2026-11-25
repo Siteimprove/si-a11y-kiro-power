@@ -125,7 +125,7 @@ one at a time as a codebase is cleaned up, or all 55 for a project that should s
 or `off`. A developer overrides the committed mode on one machine with `SI_A11Y_MODE=advisory`
 or `SI_A11Y_MODE=block` and no other way; every result and the mode line say so. The detail
 of `levels`, the local override, what the result reports when the gate is narrowed, what a
-malformed file does and the result shape the agent reads are in [POWER.md](POWER.md); the
+malformed file does and the result shape the agent reads are in [SKILL.md](skills/accessibility-verification/SKILL.md); the
 `.a11yignore` format is [below](#excluding-paths-and-suppressing-criteria-a11yignore).
 
 What block mode does in Kiro: the signal reaches the agent through the tools' results, the
@@ -206,4 +206,4 @@ engine rule id, and it never blocks:
 `si-a11y init` writes a commented starter file. Every exclusion is reported with its rule,
 its source and its reason, every suppression with its entry, reason and count, and a result
 whose gate an entry narrows says so. An exclusion is never mistakable for a clean result; what
-the result reports is in [POWER.md](POWER.md).
+the result reports is in [SKILL.md](skills/accessibility-verification/SKILL.md).

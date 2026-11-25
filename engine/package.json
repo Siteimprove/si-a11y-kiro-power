@@ -1,6 +1,6 @@
 {
   "name": "@siteimprove/si-a11y",
-  "version": "1.1.38",
+  "version": "1.1.39",
   "description": "Local WCAG 2.2 A/AA engine for HTML, CSS and framework components (JSX/TSX, Vue, Angular, Svelte). The code being checked never leaves the machine (PRIVACY.md). Superset of @siteimprove/a11y-local.",
   "license": "MIT",
   "type": "module",
@@ -35,7 +35,7 @@
     "note": "Generated from packages/si-a11y. Change the source and run `npm run bundle`; never edit these files by hand.",
     "lockfile": {
       "path": "packages/si-a11y/package-lock.json",
-      "sha256": "74b1ab2a7df0fbed2aebdb76d020f792a17021e601027ff59edda069296e0d18"
+      "sha256": "53d0db0a583fc310a109c93f34359de30fc1965833d7b68cee0767030fab0ee3"
     },
     "dependencies": {
       "node_modules/@babel/parser": {
